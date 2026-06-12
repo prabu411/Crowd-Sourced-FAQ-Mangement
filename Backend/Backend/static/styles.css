@@ -1,0 +1,103 @@
+/* Design Tokens and Core Styling */
+
+:root {
+    --bg-main: #0b0c15;
+    --card-bg: rgba(18, 22, 45, 0.45);
+    --border-color: rgba(35, 40, 79, 0.6);
+    --neon-violet: #8b5cf6;
+    --neon-cyan: #06b6d4;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: #e0e2ed;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Tab button states */
+.tab-btn {
+    position: relative;
+    cursor: pointer;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active::after {
+    background: linear-gradient(90deg, var(--neon-violet), var(--neon-cyan));
+}
+
+/* Custom Scrollbar for Logging Console */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #05060b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e223d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+}
+
+/* Glowing Animations */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    }
+}
+
+.glow-btn:hover {
+    animation: glow 2s infinite;
+}
+
+/* Micro-transitions */
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
